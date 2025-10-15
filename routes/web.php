@@ -15,7 +15,7 @@ use App\Http\Controllers\Admin\CategoryController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/berita', [ArticleController::class, 'index'])->name('articles.index');
-
+Route::get('/berita/{post}', [ArticleController::class, 'show'])->name('articles.show');
 
 Route::middleware(['auth', 'verified'])->prefix('admin')->name('admin.')->group(function () {
 
