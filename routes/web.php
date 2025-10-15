@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\PostController;
 use Illuminate\Support\Facades\Route;
@@ -11,15 +13,12 @@ use App\Http\Controllers\Admin\CategoryController;
 |--------------------------------------------------------------------------
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/berita', [ArticleController::class, 'index'])->name('articles.index');
 
 
 Route::middleware(['auth', 'verified'])->prefix('admin')->name('admin.')->group(function () {
-    
-    // Halaman Dashboard Admin (Akan menjadi landing page setelah login)
-    // Menggantikan route /dashboard yang lama
+
     Route::get('/', function () {
         return view('admin.dashboard');
     })->name('dashboard'); 
