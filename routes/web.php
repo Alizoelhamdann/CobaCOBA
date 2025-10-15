@@ -19,10 +19,8 @@ use App\Http\Controllers\ArticleController;
 |
 */
 
-// == HALAMAN UNTUK PENGUNJUNG (FRONTEND) ==
-Route::get('/', function () {
-    return view('welcome');
-})->name('home');
+Route::get('/', [\App\Http\Controllers\HomeController::class, 'index']);
+
 
 Route::get('/berita', [ArticleController::class, 'index'])->name('articles.index');
 
@@ -35,7 +33,6 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
-    // Rute untuk Profile
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
