@@ -21,7 +21,6 @@
                         </a>
                     </div>
                     <div class="flex lg:flex-1 lg:justify-end gap-x-6">
-                        <a href="{{ route('articles.index') }}" class="text-sm font-semibold leading-6 text-gray-900 dark:text-white">Berita</a>
                         @auth
                             <a href="{{ route('dashboard') }}" class="text-sm font-semibold leading-6 text-gray-900 dark:text-white">Dashboard</a>
                         @else
